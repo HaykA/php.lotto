@@ -1,0 +1,84 @@
+<main class="container container-fluid">
+    <h1>Lotto</h1>
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active">
+            <a href="#trekkingen" aria-controls="trekkingen" role="tab" data-toggle="tab">Trekkingen</a>
+        </li>
+
+        <li role="presentation">
+            <a href="#aantallen" aria-controls="aantallen" role="tab" data-toggle="tab">Aantallen</a>
+        </li>
+
+        <li role="presentation">
+            <a href="#maxaantal" aria-controls="maxaantal" role="tab" data-toggle="tab">Meest voorkomend</a>
+        </li>
+    </ul>
+
+    <div class="lotto-container">
+        <div id="myTabs" class="tab-content">
+            <div role="tabpanel" class="tab-pane active" id="trekkingen">
+                <div class="panel panel-primary top-spaced">
+                    <div class="panel-heading">ALLE TREKKINGEN (10 WEKEN)</div>
+                    <table class="table table-hover table-bordered alle-trekkingen">
+                        <thead>
+                        <tr>
+                            <th>WEKEN</th>
+                            <?php for($i = 0; $i < Lotto::$AANTAL; $i++) { ?>
+                            <th>G<span class="not-smart">ETAL </span><?php echo $i+1 ?></th>
+                            <?php } ?>
+                        </tr>
+                        </thead>
+                        <?php for($i = 0; $i < $lotto->getAantalWeken(); $i++) { ?>
+                        <tr>
+                            <th>W<span class="not-smart">eek </span><?php echo $i+1 ?></th>
+                            <?php foreach($lotto->getTrekkingen()[$i] as $getal) { ?>
+                            <td><?php echo $getal ?></td>
+                            <?php } ?>
+                        </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="aantallen">
+                <div class="panel panel-primary top-spaced">
+                    <div class="panel-heading">HET AANTAL VOORKOMENS PER GETAL (10 WEKEN)</div>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th>GETAL</th>
+                            <th>AANTAL</th>
+                        </tr>
+                        </thead>
+                        <?php foreach($lotto->getAantallenPerGetal() as $getal=>$aantal) { ?>
+                        <tr>
+                            <td><?php echo $getal+1 ?></td>
+                            <td><?php echo $aantal ?></td>
+                        </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+            </div>
+
+            <div role="tabpanel" class="tab-pane" id="maxaantal">
+                <div class="panel panel-primary top-spaced">
+                    <div class="panel-heading">DE 10 GETALLEN MET HET MEEST AANTAL VOORKOMENS (10 WEKEN)</div>
+                    <table class="table table-hover table-bordered">
+                        <thead>
+                        <tr>
+                            <th>GETAL</th>
+                            <th>AANTAL</th>
+                        </tr>
+                        </thead>
+                        <?php foreach($lotto->getAantalMaxVoorkomendeGetallen(8) as $getal=>$aantal) { ?>
+                        <tr>
+                            <td><?php echo $getal+1 ?></td>
+                            <td><?php echo $aantal ?></td>
+                        </tr>
+                        <?php } ?>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>

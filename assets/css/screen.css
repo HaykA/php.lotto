@@ -1,0 +1,52 @@
+.top-spaced {
+    margin-top: 15px;
+}
+
+.container {
+    margin-bottom: 30px;
+}
+
+.lotto-container table {
+    table-layout: fixed;
+}
+.alle-trekkingen td,
+.alle-trekkingen th {
+    width: 12.5%;
+}
+
+.lotto-container table th,
+.lotto-container table td {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+
+@media screen and (max-width: 767px) {
+    .not-smart {
+        display: none;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .container {
+        width: 100%;
+    }
+}
+
+@media screen and (min-width: 1201px) {
+    .container {
+        width: 1200px;
+    }
+}
+
+footer {
+    position: fixed;
+    width: 100%;
+    bottom: 0;
+    left: 0;
+    padding: 3px;
+    background-color: #666;
+    color: #fff;
+    text-align: center;
+}
